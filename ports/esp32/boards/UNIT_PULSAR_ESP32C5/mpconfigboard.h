@@ -1,19 +1,30 @@
-#define MICROPY_HW_BOARD_NAME   "PulsarC5"
-#define MICROPY_HW_MCU_NAME     "ESP32-C5"
+// Board definitions for the UNIT Electronics Pulsar ESP32-C5 (Nano form factor).
 
-// Keep the upstream MicroPython version while identifying this board in the REPL.
-#define MICROPY_BANNER_NAME_AND_VERSION "MicroPython PulsarC5 " MICROPY_GIT_TAG " on " MICROPY_BUILD_DATE
+#define MICROPY_HW_BOARD_NAME               "PulsarC5"
+#define MICROPY_HW_MCU_NAME                 "ESP32-C5"
 
+// REPL is on the native USB Serial/JTAG interface (GPIO13/14), so D8/D9 are
+// not exposed as GPIO. UART0 (TX=GPIO11, RX=GPIO12) is free for the application.
 
-#define MICROPY_PY_MACHINE_I2S              (1)
+// Sensor I2C on the Nano header (SDA/SCL).
+#define MICROPY_HW_I2C0_SCL                 (3)
+#define MICROPY_HW_I2C0_SDA                 (2)
 
-// REPL is on the native USB Serial/JTAG interface; the hardware UART is left
-// free for the application. To put the REPL on UART0, define
-// MICROPY_HW_ENABLE_UART_REPL.
+// QWIIC connector.
+#define MICROPY_HW_I2C1_SCL                 (6)
+#define MICROPY_HW_I2C1_SDA                 (1)
 
-#define MICROPY_HW_I2C0_SCL  (3)
-#define MICROPY_HW_I2C0_SDA  (2)
+// SPI on the Nano header (D11/D12/D13).
+#define MICROPY_HW_SPI1_SCK                 (27)
+#define MICROPY_HW_SPI1_MOSI                (7)
+#define MICROPY_HW_SPI1_MISO                (26)
 
-#define MICROPY_HW_SPI1_MOSI (7)
-#define MICROPY_HW_SPI1_MISO (26)
-#define MICROPY_HW_SPI1_SCK  (27)
+// microSD in SPI mode, shares SPI1: machine.SDCard(slot=2).
+#define MICROPY_HW_SDCARD_SPI_SCK           (27)
+#define MICROPY_HW_SDCARD_SPI_MOSI          (7)
+#define MICROPY_HW_SDCARD_SPI_MISO          (26)
+#define MICROPY_HW_SDCARD_SPI_CS            (23)
+
+// The onboard ICS-43434 I2S microphone (J20) shares pins with SPI1:
+// SCK=GPIO27, WS=GPIO26, SD=GPIO7, CH=GPIO10. It cannot be used at the
+// same time as SPI1 or the microSD card.

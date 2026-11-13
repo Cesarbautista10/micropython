@@ -8,12 +8,16 @@
     "docs": "",
     "features": [
         "BLE",
+        "Battery Charging",
         "External Flash",
         "External RAM",
-        "WiFi",
+        "JST-SH",
+        "Microphone",
+        "RGB LED",
         "USB",
         "USB-C",
-        "Battery Charging"
+        "WiFi",
+        "microSD"
     ],
     "images": [],
     "mcu": "esp32c5",
