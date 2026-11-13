@@ -159,6 +159,8 @@ list(APPEND MICROPY_SOURCE_QSTR
     ${MICROPY_SOURCE_PORT}
     ${MICROPY_SOURCE_BOARD}
     ${MICROPY_SOURCE_TINYUSB}
+    # Board options can enable modules and change the generated qstrs and GC roots.
+    ${MICROPY_BOARD_DIR}/mpconfigboard.h
 )
 
 list(APPEND IDF_COMPONENTS
