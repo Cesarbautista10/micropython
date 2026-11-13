@@ -1,5 +1,8 @@
-#define MICROPY_HW_BOARD_NAME   "Pulsar C5 UNIT Electronics"
+#define MICROPY_HW_BOARD_NAME   "PulsarC5"
 #define MICROPY_HW_MCU_NAME     "ESP32-C5"
+
+// Keep the upstream MicroPython version while identifying this board in the REPL.
+#define MICROPY_BANNER_NAME_AND_VERSION "MicroPython PulsarC5 " MICROPY_GIT_TAG " on " MICROPY_BUILD_DATE
 
 
 #define MICROPY_PY_MACHINE_I2S              (1)
